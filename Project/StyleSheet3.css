@@ -1,0 +1,43 @@
+﻿body {
+      background: url(background1.jpg);
+}
+div {
+   
+}
+
+form {
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-style: normal;
+    font-weight: bolder;
+    background-color: #000000;
+    color: #FFFFFF;
+
+}
+centre {
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;  
+}
+#ul {
+    list-style-type:none;
+	margin:0;
+	padding:0;
+	position: absolute;
+}
+.newStyle1 {
+    font-family: "Levenim MT";
+}
+Items {
+  	min-width:140px;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	background: #2f3036;
+	text-decoration: none;
+}

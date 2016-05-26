@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Menubar.master.cs" Inherits="Menubar" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<link href="StyleSheet3.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    </div>
+        <asp:Menu ID="Menu1" orientation="Horizontal" runat="server" BackColor="White" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Medium" ForeColor="Black" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick">
+            <DynamicHoverStyle BackColor="#FF3300" ForeColor="White" BorderColor="White" BorderStyle="Solid" />
+            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" BorderColor="Black" BorderStyle="Double" />
+            <DynamicMenuStyle BackColor="#E3EAEB" />
+            <DynamicSelectedStyle BackColor="#1C5E55" />
+            <DynamicItemTemplate>
+                <%# Eval("Text") %>
+            </DynamicItemTemplate>
+            <Items>
+               
+                <asp:MenuItem NavigateUrl="~/Main.aspx" Text="Main" Value="Main"></asp:MenuItem>
+                
+                <asp:MenuItem NavigateUrl="~/Browse.aspx" Text="Browse" Value="Browse"></asp:MenuItem>
+
+                <asp:MenuItem NavigateUrl="~/Add.aspx" Text="Add" Value="Add"></asp:MenuItem>
+
+                <asp:MenuItem Text="Log Out" Value="Log Out"></asp:MenuItem>
+
+            </Items>
+            <StaticHoverStyle BackColor="#FF3300" ForeColor="White" BorderColor="White" BorderStyle="Double" />
+            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" BackColor="Silver" BorderColor="#FF3300" BorderStyle="Groove" ForeColor="Black" />
+            <StaticMenuStyle BackColor="#333333" />
+            <StaticSelectedStyle BackColor="#CC6600" />
+        </asp:Menu>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <Organisation>
+    <ID>101</ID>
+    <Name>Builders United</Name>
+    <Address>201 Builders St</Address>
+    <Building>London bridge</Building>
+    <Job>Build The London bridge</Job>
+    <Info>Its probably gonna take a while.</Info>
+    <City>Wellington</City>  
+  </Organisation>
+  <Organisation>
+    <ID>123</ID>
+    <Name>Fast Builders</Name>
+    <Address>307 Speed St</Address>
+    <Building>Eiffel Tower</Building>
+    <Job>Build new house</Job>
+    <Info>Two story building</Info>
+    <City>Auckland</City>
+  </Organisation>
+  <Organisation>
+    <ID>157</ID>
+    <Name>New Builders</Name>
+    <Address>1111 Here St</Address>
+    <Building>Giza Pyramid</Building>
+    <Job>Build new deck</Job>
+    <Info>Wooden deck</Info>
+    <City>Christchurch</City>
+  </Organisation>
+</Data>

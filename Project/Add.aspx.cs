@@ -33,7 +33,9 @@ public partial class Add : System.Web.UI.Page
         }
 
         Responce.Visible = true;
-        number.Text = "There are " + Storage.jobs.Count + " items inside database.";
-        number.Visible = true;
+    }
+    protected void addJob_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

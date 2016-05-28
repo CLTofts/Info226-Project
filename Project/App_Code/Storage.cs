@@ -15,4 +15,8 @@ public static class Storage
             { "admin", "admin"}
         };
    public static Dictionary<String, Tuple<String, String, String>> jobs = new Dictionary<String, Tuple<String, String, String>>();
+
+   public static List<Organisation> database = new List<Organisation>();
+
+   public static Boolean isLoaded = false;
 }

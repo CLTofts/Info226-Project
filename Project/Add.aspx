@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Label ID="Label1" runat="server" Text="ID:"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="addId" runat="server"></asp:TextBox>
+    <asp:TextBox ID="addId" runat="server" ReadOnly ="true"></asp:TextBox>
     <br />
     <asp:Label ID="Label2" runat="server" Text="Name:"></asp:Label>
     &nbsp;&nbsp;&nbsp;

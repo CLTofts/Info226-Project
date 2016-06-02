@@ -23,8 +23,6 @@ public partial class Browse : System.Web.UI.Page
              */
             if (!Storage.isLoaded)
             {
-                Storage.database.Clear();
-                Storage.database.Clear();
                 XmlDocument doc = new XmlDocument();
                 try
                 {
@@ -65,76 +63,78 @@ public partial class Browse : System.Web.UI.Page
                     Response.Write("Error reading from XML File");
                 }
             }
-            try{
-                string file = @"\XMLFile.xml";
-                string rel_dir = HttpContext.Current.ApplicationInstance.Server.MapPath("~/XML_Data");
-                string absolute_path = rel_dir + file;
-
-                if (File.Exists(absolute_path))
-                {
-                    File.Delete(absolute_path);
-                }
-                StreamWriter newFile = File.CreateText(absolute_path);
-
-                XmlDocument doc = new XmlDocument();
-                XmlNode rootNode = doc.CreateElement("Data");
-
-                foreach (Organisation org in Storage.database)
-                {
-                    XmlNode orgNode = doc.CreateElement("Organisation");
-
-                    XmlNode idNode = doc.CreateElement("ID");
-                    idNode.InnerText = org.id.ToString();
-
-                    XmlNode nameNode = doc.CreateElement("Name");
-                    nameNode.InnerText = org.name;
-
-                    XmlNode addressNode = doc.CreateElement("Address");
-                    addressNode.InnerText = org.address;
-
-                    XmlNode companyNode = doc.CreateElement("Company");
-                    companyNode.InnerText = org.company;
-
-                    XmlNode jobNode = doc.CreateElement("Job");
-                    jobNode.InnerText = org.job;
-
-                    XmlNode infoNode = doc.CreateElement("Info");
-                    infoNode.InnerText = org.info;
-
-                    XmlNode cityNode = doc.CreateElement("City");
-                    cityNode.InnerText = org.city;
-
-                    orgNode.AppendChild(idNode);
-                    orgNode.AppendChild(nameNode);
-                    orgNode.AppendChild(addressNode);
-                    orgNode.AppendChild(companyNode);
-                    orgNode.AppendChild(jobNode);
-                    orgNode.AppendChild(infoNode);
-                    orgNode.AppendChild(cityNode);
-
-                    rootNode.AppendChild(orgNode);
-                }
-
-                doc.AppendChild(rootNode);
-                doc.Save(newFile);
-
-                newFile.Close();
-            }
-            catch
+            else
             {
-                Response.Write("ERROR");
+
+                try
+                {
+                    string file = @"\XMLFile.xml";
+                    string rel_dir = HttpContext.Current.ApplicationInstance.Server.MapPath("~/XML_Data");
+                    string absolute_path = rel_dir + file;
+
+                    if (File.Exists(absolute_path))
+                    {
+                        File.Delete(absolute_path);
+                    }
+                    StreamWriter newFile = File.CreateText(absolute_path);
+
+                    XmlDocument doc = new XmlDocument();
+                    XmlNode rootNode = doc.CreateElement("Data");
+
+                    foreach (Organisation org in Storage.database)
+                    {
+                        XmlNode orgNode = doc.CreateElement("Organisation");
+
+                        XmlNode idNode = doc.CreateElement("ID");
+                        idNode.InnerText = org.id.ToString();
+
+                        XmlNode nameNode = doc.CreateElement("Name");
+                        nameNode.InnerText = org.name;
+
+                        XmlNode addressNode = doc.CreateElement("Address");
+                        addressNode.InnerText = org.address;
+
+                        XmlNode companyNode = doc.CreateElement("Company");
+                        companyNode.InnerText = org.company;
+
+                        XmlNode jobNode = doc.CreateElement("Job");
+                        jobNode.InnerText = org.job;
+
+                        XmlNode infoNode = doc.CreateElement("Info");
+                        infoNode.InnerText = org.info;
+
+                        XmlNode cityNode = doc.CreateElement("City");
+                        cityNode.InnerText = org.city;
+
+                        orgNode.AppendChild(idNode);
+                        orgNode.AppendChild(nameNode);
+                        orgNode.AppendChild(addressNode);
+                        orgNode.AppendChild(companyNode);
+                        orgNode.AppendChild(jobNode);
+                        orgNode.AppendChild(infoNode);
+                        orgNode.AppendChild(cityNode);
+
+                        rootNode.AppendChild(orgNode);
+                    }
+
+                    doc.AppendChild(rootNode);
+                    doc.Save(newFile);
+
+                    newFile.Close();
+                }
+                catch
+                {
+                    Response.Write("ERROR");
+                }
             }
             foreach (Organisation org in Storage.database)
             {
                 ListBox1.Items.Add(org.name);
             }
-            bool delete = (bool)Session["admin"];
-            if (delete)
-            {
-                deleteButton.Visible = true;
-            }
-        }
+            deleteButton.Visible = false;
+            editButton.Visible = false;
 
+        }
     }
    
 
@@ -162,6 +162,7 @@ public partial class Browse : System.Web.UI.Page
                 if (int.Parse(Session["ID"].ToString()) == org.id)
                 {
                     deleteButton.Visible = true;
+                    editButton.Visible = true;
                     found = true;
                     break;
                 }
@@ -170,6 +171,7 @@ public partial class Browse : System.Web.UI.Page
         if (!found)
         {
             deleteButton.Visible = false;
+            editButton.Visible = false;
         }
 
         
@@ -189,14 +191,35 @@ public partial class Browse : System.Web.UI.Page
         {
             Storage.database.Remove(toRemove);
         }
+        ListBox1.Items.Remove(ListBox1.SelectedItem);
+        deleteButton.Visible = false;
+        editButton.Visible = false;
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        ListBox1.Items.ToString();
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
         ListBox1.Items.Clear();
         foreach (Organisation org in Storage.database)
         {
             ListBox1.Items.Add(org.name);
         }
     }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void Button3_Click(object sender, EventArgs e)
     {
-        ListBox1.Items.ToString();
+        if (!(string.IsNullOrEmpty(TextBox1.Text)))
+        {
+            ListBox1.Items.Clear();
+            foreach (Organisation org in Storage.database)
+            {
+                if (org.name.ToLower().IndexOf(TextBox1.Text.ToLower()) != -1)
+                {
+                    ListBox1.Items.Add(org.name);
+                }
+            }
+        }
+ 
     }
 }

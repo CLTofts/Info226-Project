@@ -20,7 +20,7 @@ public partial class Login : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         //foreach(String key in Storage.logins.key){
-        if (!((string.IsNullOrEmpty(TextBox1.Text)) && (string.IsNullOrEmpty(TextBox2.Text)) && (String.IsNullOrEmpty(id.Text))))
+        if (!(string.IsNullOrEmpty(TextBox1.Text)) && !(string.IsNullOrEmpty(TextBox2.Text)) && !(string.IsNullOrEmpty(id.Text)))
         {
             int newId;
             if (int.TryParse(id.Text, out newId))

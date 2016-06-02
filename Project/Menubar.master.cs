@@ -17,7 +17,6 @@ public partial class Menubar : System.Web.UI.MasterPage
         if (e.Item.Text == "Log Out")
         {
             Session.Abandon();
-            Storage.isLoaded = false;
             Server.Transfer("Login.aspx");
         }
 

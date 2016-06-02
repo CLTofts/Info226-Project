@@ -9,7 +9,10 @@ public partial class Add : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+        {
+            addId.Text = Session["ID"].ToString();
+        }
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -35,30 +38,40 @@ public partial class Add : System.Web.UI.Page
 
         Responce.Visible = true;
         */
-        if (!(string.IsNullOrEmpty(addId.Text) && !(string.IsNullOrEmpty(addName.Text)) && !(string.IsNullOrEmpty(addAddress.Text)) &&
-        !(string.IsNullOrEmpty(addBuilding.Text)) && !(string.IsNullOrEmpty(addJob.Text)) && !(string.IsNullOrEmpty(addInfo.Text))))
+        if (!(string.IsNullOrEmpty(addId.Text)) && !(string.IsNullOrEmpty(addName.Text)) && !(string.IsNullOrEmpty(addAddress.Text)) &&
+        !(string.IsNullOrEmpty(addBuilding.Text)) && !(string.IsNullOrEmpty(addJob.Text)) && !(string.IsNullOrEmpty(addInfo.Text)))
         {
-            
-            int number;
-            if (int.TryParse(addId.Text, out number))
+            List<String> names = new List<String>();
+            foreach (Organisation org in Storage.database)
             {
-                Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
-                    addJob.Text, addInfo.Text, addCity.SelectedItem.ToString()));
-                Server.Transfer("Browse.aspx");
+                names.Add(org.name);
             }
-            else
-            {
-                Response.Text = "ID needs to be a number";
-            }
-                
+                if (!names.Contains(addName.Text))
+                {
+                    int number;
+                    if (int.TryParse(addId.Text, out number))
+                    {
+                        Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
+                            addJob.Text, addInfo.Text, addCity.SelectedItem.ToString()));
+                        Server.Transfer("Browse.aspx");
+                    }
+                    else
+                    {
+                        Response.Text = "ID needs to be a number";
+                    }
+                }
+                else
+                {
+                    Response.Text = "That Building is already being worked on.";
+                    Response.Visible = true;
+                }
             
         }
-
         else
         {
             Response.Text = "Please fill in all of the boxes.";
             Response.Visible = true;
-        }
+            }
     }
     protected void addJob_TextChanged(object sender, EventArgs e)
     {

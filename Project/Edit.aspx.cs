@@ -11,12 +11,8 @@ public partial class Edit : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            /*
-            TextBox1.Text = Session["name"].ToString();
-            TextBox2.Text = Session["job"].ToString();
-            TextBox3.Text = Session["info"].ToString();
-            DropDownList1.SelectedIndex = DropDownList1.Items.IndexOf(DropDownList1.Items.FindByText(Session["city"].ToString()));
-            */
+
+            
             foreach (Organisation org in Storage.database)
             {
                 if (Session["Org"].Equals(org.name))

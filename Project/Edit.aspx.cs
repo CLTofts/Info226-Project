@@ -24,7 +24,7 @@ public partial class Edit : System.Web.UI.Page
                     addId.Text = org.id.ToString();
                     addName.Text = org.name;
                     addAddress.Text = org.address;
-                    addBuilding.Text = org.building;
+                    addBuilding.Text = org.company;
                     addJob.Text = org.job;
                     addInfo.Text = org.info;
                     addCity.SelectedIndex = addCity.Items.IndexOf(addCity.Items.FindByText(org.city));
@@ -49,7 +49,7 @@ public partial class Edit : System.Web.UI.Page
                             org.id = number;
                             org.name = addName.Text;
                             org.address = addAddress.Text;
-                            org.building = addBuilding.Text;
+                            org.company = addBuilding.Text;
                             org.job = addJob.Text;
                             org.info = addInfo.Text;
                             org.city = addCity.SelectedItem.ToString();

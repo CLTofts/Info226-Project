@@ -15,7 +15,7 @@
     <asp:Label ID="Label3" runat="server" Text="Address:"></asp:Label>
     <asp:TextBox ID="addAddress" runat="server"></asp:TextBox>
     <br />
-    <asp:Label ID="Label4" runat="server" Text="Building:"></asp:Label>
+    <asp:Label ID="Label4" runat="server" Text="Company:"></asp:Label>
     <asp:TextBox ID="addBuilding" runat="server"></asp:TextBox>
     <p style="width: 391px">
         <asp:Label ID="Label5" runat="server" Text="Job:"></asp:Label>

@@ -4,20 +4,29 @@
         <link href="StyleSheet3.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Label ID="Label1" runat="server" Text="Name:"></asp:Label>
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+    <asp:Label ID="Label8" runat="server" Text="ID:"></asp:Label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="addId" runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Name:"></asp:Label>
+    &nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="addName" runat="server" Width="159px"></asp:TextBox>
+    <br />
+    <asp:Label ID="Label3" runat="server" Text="Address:"></asp:Label>
+    <asp:TextBox ID="addAddress" runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="Label4" runat="server" Text="Building:"></asp:Label>
+    <asp:TextBox ID="addBuilding" runat="server"></asp:TextBox>
+    <p style="width: 391px">
+        <asp:Label ID="Label1" runat="server" Text="Job:"></asp:Label>
+        &nbsp;<asp:TextBox ID="addJob" runat="server" Width="256px" style="margin-left: 50px"></asp:TextBox>
+    </p>
+    <asp:Label ID="Label6" runat="server" Text="Info:"></asp:Label>
+    <asp:TextBox ID="addInfo" runat="server" Width="288px" Height="280px"></asp:TextBox>
     <br />
     <br />
-    <asp:Label ID="Label2" runat="server" Text="Job:"></asp:Label>
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-    <br />
-    <br />
-    <asp:Label ID="Label3" runat="server" Text="Info:"></asp:Label>
-    <asp:TextBox ID="TextBox3" runat="server" OnTextChanged="TextBox3_TextChanged" Height="205px" Width="278px"></asp:TextBox>
-    <br />
-    <br />
-    <asp:Label ID="Label4" runat="server" Text="City"></asp:Label>
-    <asp:DropDownList ID="DropDownList1" runat="server">
+    <asp:Label ID="Label7" runat="server" Text="City:"></asp:Label>
+    <asp:DropDownList ID="addCity" runat="server">
         <asp:ListItem>Wellington</asp:ListItem>
         <asp:ListItem>Auckland</asp:ListItem>
         <asp:ListItem>Hamilton</asp:ListItem>

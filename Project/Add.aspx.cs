@@ -13,6 +13,7 @@ public partial class Add : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+        /*
         if (!((string.IsNullOrEmpty(addName.Text)) && (string.IsNullOrEmpty(addJob.Text) && (string.IsNullOrEmpty(addInfo.Text)))))
         {
             if (!Storage.jobs.Keys.Contains(addName.Text))
@@ -33,7 +34,38 @@ public partial class Add : System.Web.UI.Page
         }
 
         Responce.Visible = true;
-        number.Text = "There are " + Storage.jobs.Count + " items inside database.";
-        number.Visible = true;
+        */
+        if (!(string.IsNullOrEmpty(addId.Text) && !(string.IsNullOrEmpty(addName.Text)) && !(string.IsNullOrEmpty(addAddress.Text)) &&
+        !(string.IsNullOrEmpty(addBuilding.Text)) && !(string.IsNullOrEmpty(addJob.Text)) && !(string.IsNullOrEmpty(addInfo.Text))))
+        {
+
+            foreach (Organisation org in Storage.database)
+            {
+                if (Session["Org"].Equals(org.name))
+                {
+                    int number;
+                    if (int.TryParse(addId.Text, out number))
+                    {
+                        Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
+                            addJob.Text, addInfo.Text, addCity.SelectedItem.ToString()));
+                        Server.Transfer("Browse.aspx");
+                    }
+                    else
+                    {
+                        Response.Text = "ID needs to be a number";
+                    }
+                }
+            }
+        }
+
+        else
+        {
+            Response.Text = "Please fill in all of the boxes.";
+            Response.Visible = true;
+        }
+    }
+    protected void addJob_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

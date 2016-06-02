@@ -13,14 +13,6 @@ public partial class Browse : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            /*           List<String> names = new List<String>();
-                       foreach (String key in Storage.jobs.Keys)
-                       {
-                           names.Add(key);
-                       }
-                       ListBox1.DataSource = names;
-                       ListBox1.DataBind();
-             */
             if (!Storage.isLoaded)
             {
                 XmlDocument doc = new XmlDocument();
@@ -44,13 +36,14 @@ public partial class Browse : System.Web.UI.Page
                     XmlNodeList addresses = doc.GetElementsByTagName("Address");
                     XmlNodeList company = doc.GetElementsByTagName("Company");
                     XmlNodeList jobs = doc.GetElementsByTagName("Job");
+                    XmlNodeList images = doc.GetElementsByTagName("Image");
                     XmlNodeList informations = doc.GetElementsByTagName("Info");
                     XmlNodeList cities = doc.GetElementsByTagName("City");
                     int j = 0;
                     for (int i = 0; i < ids.Count; i++)
                     {
                         Organisation org = new Organisation(int.Parse(ids[i].InnerText), names[i].InnerText, addresses[i].InnerText,
-                            company[i].InnerText, jobs[i].InnerText, informations[i].InnerText, cities[i].InnerText);
+                            company[i].InnerText, jobs[i].InnerText, images[i].InnerText, informations[i].InnerText, cities[i].InnerText);
                         Storage.database.Add(org);
                         j = j + 1;
                     }
@@ -100,6 +93,9 @@ public partial class Browse : System.Web.UI.Page
                         XmlNode jobNode = doc.CreateElement("Job");
                         jobNode.InnerText = org.job;
 
+                        XmlNode imageNode = doc.CreateElement("Image");
+                        imageNode.InnerText = org.image;
+
                         XmlNode infoNode = doc.CreateElement("Info");
                         infoNode.InnerText = org.info;
 
@@ -111,6 +107,7 @@ public partial class Browse : System.Web.UI.Page
                         orgNode.AppendChild(addressNode);
                         orgNode.AppendChild(companyNode);
                         orgNode.AppendChild(jobNode);
+                        orgNode.AppendChild(imageNode);
                         orgNode.AppendChild(infoNode);
                         orgNode.AppendChild(cityNode);
 

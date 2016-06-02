@@ -16,7 +16,6 @@ public partial class adminMaster : System.Web.UI.MasterPage
         if (e.Item.Text == "Log Out")
         {
             Session.Abandon();
-            Storage.isLoaded = false;
             Server.Transfer("Login.aspx");
         }
 

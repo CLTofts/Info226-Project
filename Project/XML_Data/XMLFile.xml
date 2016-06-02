@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Data>
   <Organisation>
+    <ID>2</ID>
+    <Name>Image Building</Name>
+    <Address>there</Address>
+    <Company>image United</Company>
+    <Job>make image</Job>
+    <Image>WIN_20160520_17_11_30_Pro.jpg</Image>
+    <Info>good</Info>
+    <City>Wellington</City>
+  </Organisation>
+  <Organisation>
     <ID>99</ID>
     <Name>Railway station</Name>
     <Address>Railway Street</Address>
     <Company>railway runners</Company>
     <Job>fix the tracks</Job>
+    <Image>random</Image>
     <Info>The were broken by explosives</Info>
     <City>Wellington</City>
   </Organisation>
@@ -15,25 +26,18 @@
     <Address>201 Bee Lane</Address>
     <Company>Beezles</Company>
     <Job>Clean out all the bees wax</Job>
+    <Image>also random</Image>
     <Info>they are in a very sticky situation.</Info>
-    <City>Wellington</City>
-  </Organisation>
-  <Organisation>
-    <ID>99</ID>
-    <Name>Railway station</Name>
-    <Address>Railway Street</Address>
-    <Company>railway runners</Company>
-    <Job>fix the tracks</Job>
-    <Info>The were broken by explosives</Info>
     <City>Wellington</City>
   </Organisation>
   <Organisation>
     <ID>2</ID>
-    <Name>Beehive</Name>
-    <Address>201 Bee Lane</Address>
-    <Company>Beezles</Company>
-    <Job>Clean out all the bees wax</Job>
-    <Info>they are in a very sticky situation.</Info>
-    <City>Wellington</City>
+    <Name>The WhiteHouse</Name>
+    <Address>White Street</Address>
+    <Company>Ropers</Company>
+    <Job>clean the outside</Job>
+    <Image>C:\Users\Chris Tofts\Documents\Info226-Project\Project\Images\2\nose.636005234633530377\.jpg</Image>
+    <Info>Its in NZ for some reason</Info>
+    <City>Otaki</City>
   </Organisation>
 </Data>

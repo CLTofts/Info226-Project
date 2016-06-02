@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Add : System.Web.UI.Page
 {
@@ -46,32 +47,70 @@ public partial class Add : System.Web.UI.Page
             {
                 names.Add(org.name);
             }
-                if (!names.Contains(addName.Text))
+            if (!names.Contains(addName.Text))
+            {
+                int number;
+                if (int.TryParse(addId.Text, out number))
                 {
-                    int number;
-                    if (int.TryParse(addId.Text, out number))
+                    String path = "failed";
+                    if (FuUpload.HasFile)
                     {
-                        Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
-                            addJob.Text, addInfo.Text, addCity.SelectedItem.ToString()));
-                        Server.Transfer("Browse.aspx");
+                        if ((FuUpload.PostedFile.ContentType == "image/jpeg") ||
+                            (FuUpload.PostedFile.ContentType == "image/png") ||
+                            (FuUpload.PostedFile.ContentType == "image/bmp") ||
+                            (FuUpload.PostedFile.ContentType == "image/gif"))
+                        {
+                            if (Convert.ToInt64(FuUpload.PostedFile.ContentLength) < 10000000)
+                            {
+                                String photofolder = Path.Combine(@"C:\Users\Chris Tofts\Documents\Info226-Project\Project\Images", Session["ID"].ToString());
+                                if (!Directory.Exists(photofolder))
+                                {
+                                    Directory.CreateDirectory(photofolder);
+                                }
+                                string extension = Path.GetExtension(FuUpload.FileName);
+                                string uniqueName = Path.ChangeExtension(FuUpload.FileName, DateTime.Now.Ticks.ToString());
+
+                                path = Path.Combine(photofolder, uniqueName, extension);
+                                FuUpload.SaveAs(Path.Combine(photofolder, uniqueName + extension));
+  
+                                Warning.Text = "Successfully Uploaded " + FuUpload.FileName;
+                            }
+                            else
+                            {
+                                Warning.Text = "File must be less than 10 MB";
+                            }
+
+                        }
+                        else
+                        {
+                            Warning.Text = "File must be jpg png or usable";
+                        }
                     }
                     else
                     {
-                        Response.Text = "ID needs to be a number";
+                        Warning.Text = "No File Found";
                     }
+                    Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
+                        addJob.Text, path, addInfo.Text, addCity.SelectedItem.ToString()));
+                    Server.Transfer("Browse.aspx");
                 }
                 else
                 {
-                    Response.Text = "That Building is already being worked on.";
-                    Response.Visible = true;
+                    Response.Text = "ID needs to be a number";
                 }
-            
+            }
+            else
+            {
+                Response.Text = "That Building is already being worked on.";
+                Response.Visible = true;
+            }
+
         }
         else
         {
             Response.Text = "Please fill in all of the boxes.";
             Response.Visible = true;
-            }
+        }
     }
     protected void addJob_TextChanged(object sender, EventArgs e)
     {

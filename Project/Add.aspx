@@ -21,6 +21,13 @@
         <asp:Label ID="Label5" runat="server" Text="Job:"></asp:Label>
         &nbsp;<asp:TextBox ID="addJob" runat="server" Width="256px" OnTextChanged="addJob_TextChanged" style="margin-left: 50px"></asp:TextBox>
     </p>
+    <p style="width: 391px">
+        <asp:Label ID="Label8" runat="server" Text="Image"></asp:Label>
+        <asp:FileUpload ID="FuUpload" runat="server" />
+    </p>
+    <p style="width: 391px">
+        <asp:Label ID="Warning" runat="server" Text="Warning"></asp:Label>
+    </p>
     <asp:Label ID="Label6" runat="server" Text="Info:"></asp:Label>
     <asp:TextBox ID="addInfo" runat="server" Width="288px" Height="280px"></asp:TextBox>
     <br />

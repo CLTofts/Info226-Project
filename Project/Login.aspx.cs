@@ -11,8 +11,11 @@ public partial class Login : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            Storage.login.Add(new UserLogin("admin", "admin", 1, true));
-            Storage.login.Add(new UserLogin("notadmin", "notadmin", 2,  false));
+            if (!Storage.isLoaded)
+            {
+                Storage.login.Add(new UserLogin("admin", "admin", 1, true));
+                Storage.login.Add(new UserLogin("notadmin", "notadmin", 2, false));
+            }
             
         }
     }

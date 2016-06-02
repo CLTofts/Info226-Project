@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Data>
   <Organisation>
     <ID>101</ID>
@@ -7,7 +7,7 @@
     <Building>London bridge</Building>
     <Job>Build The London bridge</Job>
     <Info>Its probably gonna take a while.</Info>
-    <City>Wellington</City>  
+    <City>Wellington</City>
   </Organisation>
   <Organisation>
     <ID>123</ID>
@@ -19,12 +19,24 @@
     <City>Auckland</City>
   </Organisation>
   <Organisation>
-    <ID>157</ID>
-    <Name>New Builders</Name>
+    <ID>669</ID>
+    <Name>old builders</Name>
     <Address>1111 Here St</Address>
     <Building>Giza Pyramid</Building>
     <Job>Build new deck</Job>
     <Info>Wooden deck</Info>
-    <City>Christchurch</City>
+    <City>Hamilton</City>
+  </Organisation>
+  <Organisation>
+    <ID>999</ID>
+    <Name>New name</Name>
+    <Address>somewhere</Address>
+    <Building>
+    </Building>
+    <Job>
+    </Job>
+    <Info>
+    </Info>
+    <City>Wellington</City>
   </Organisation>
 </Data>

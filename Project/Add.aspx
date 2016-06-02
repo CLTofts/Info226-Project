@@ -37,6 +37,6 @@
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add" />
     <br />
     <br />
-    <asp:Label ID="Responce" runat="server" Text="Label" Visible ="False"></asp:Label>
+    <asp:Label ID="Response" runat="server" Text="Label" Visible ="False"></asp:Label>
 </asp:Content>
 

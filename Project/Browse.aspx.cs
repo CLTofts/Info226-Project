@@ -23,6 +23,8 @@ public partial class Browse : System.Web.UI.Page
              */
             if (!Storage.isLoaded)
             {
+                Storage.database.Clear();
+                Storage.database.Clear();
                 XmlDocument doc = new XmlDocument();
                 try
                 {
@@ -46,12 +48,13 @@ public partial class Browse : System.Web.UI.Page
                     XmlNodeList jobs = doc.GetElementsByTagName("Job");
                     XmlNodeList informations = doc.GetElementsByTagName("Info");
                     XmlNodeList cities = doc.GetElementsByTagName("City");
-
+                    int j = 0;
                     for (int i = 0; i < ids.Count; i++)
                     {
                         Organisation org = new Organisation(int.Parse(ids[i].InnerText), names[i].InnerText, addresses[i].InnerText,
                             company[i].InnerText, jobs[i].InnerText, informations[i].InnerText, cities[i].InnerText);
                         Storage.database.Add(org);
+                        j = j + 1;
                     }
 
                     Storage.isLoaded = true;
@@ -125,7 +128,13 @@ public partial class Browse : System.Web.UI.Page
             {
                 ListBox1.Items.Add(org.name);
             }
+            bool delete = (bool)Session["admin"];
+            if (delete)
+            {
+                deleteButton.Visible = true;
+            }
         }
+
     }
    
 
@@ -144,7 +153,27 @@ public partial class Browse : System.Web.UI.Page
     }
     protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("I have been changed");
+        String name = ListBox1.SelectedItem.ToString();
+        bool found = false;
+        foreach (Organisation org in Storage.database)
+        {
+            if (org.name == name)
+            {
+                if (int.Parse(Session["ID"].ToString()) == org.id)
+                {
+                    deleteButton.Visible = true;
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if (!found)
+        {
+            deleteButton.Visible = false;
+        }
+
+        
+
     }
     protected void DeleteButton_Click1(object sender, EventArgs e)
     {
@@ -160,10 +189,14 @@ public partial class Browse : System.Web.UI.Page
         {
             Storage.database.Remove(toRemove);
         }
-        ListBox1.ClearSelection();
+        ListBox1.Items.Clear();
         foreach (Organisation org in Storage.database)
         {
             ListBox1.Items.Add(org.name);
         }
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        ListBox1.Items.ToString();
     }
 }

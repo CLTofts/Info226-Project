@@ -42,7 +42,7 @@ public partial class Browse : System.Web.UI.Page
                     XmlNodeList ids = doc.GetElementsByTagName("ID");
                     XmlNodeList names = doc.GetElementsByTagName("Name");
                     XmlNodeList addresses = doc.GetElementsByTagName("Address");
-                    XmlNodeList buildings = doc.GetElementsByTagName("Building");
+                    XmlNodeList company = doc.GetElementsByTagName("Company");
                     XmlNodeList jobs = doc.GetElementsByTagName("Job");
                     XmlNodeList informations = doc.GetElementsByTagName("Info");
                     XmlNodeList cities = doc.GetElementsByTagName("City");
@@ -50,7 +50,7 @@ public partial class Browse : System.Web.UI.Page
                     for (int i = 0; i < ids.Count; i++)
                     {
                         Organisation org = new Organisation(int.Parse(ids[i].InnerText), names[i].InnerText, addresses[i].InnerText,
-                            buildings[i].InnerText, jobs[i].InnerText, informations[i].InnerText, cities[i].InnerText);
+                            company[i].InnerText, jobs[i].InnerText, informations[i].InnerText, cities[i].InnerText);
                         Storage.database.Add(org);
                     }
 
@@ -89,8 +89,8 @@ public partial class Browse : System.Web.UI.Page
                     XmlNode addressNode = doc.CreateElement("Address");
                     addressNode.InnerText = org.address;
 
-                    XmlNode buildingNode = doc.CreateElement("Building");
-                    buildingNode.InnerText = org.building;
+                    XmlNode companyNode = doc.CreateElement("Company");
+                    companyNode.InnerText = org.company;
 
                     XmlNode jobNode = doc.CreateElement("Job");
                     jobNode.InnerText = org.job;
@@ -104,7 +104,7 @@ public partial class Browse : System.Web.UI.Page
                     orgNode.AppendChild(idNode);
                     orgNode.AppendChild(nameNode);
                     orgNode.AppendChild(addressNode);
-                    orgNode.AppendChild(buildingNode);
+                    orgNode.AppendChild(companyNode);
                     orgNode.AppendChild(jobNode);
                     orgNode.AppendChild(infoNode);
                     orgNode.AppendChild(cityNode);

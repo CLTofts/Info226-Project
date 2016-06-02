@@ -38,24 +38,20 @@ public partial class Add : System.Web.UI.Page
         if (!(string.IsNullOrEmpty(addId.Text) && !(string.IsNullOrEmpty(addName.Text)) && !(string.IsNullOrEmpty(addAddress.Text)) &&
         !(string.IsNullOrEmpty(addBuilding.Text)) && !(string.IsNullOrEmpty(addJob.Text)) && !(string.IsNullOrEmpty(addInfo.Text))))
         {
-
-            foreach (Organisation org in Storage.database)
+            
+            int number;
+            if (int.TryParse(addId.Text, out number))
             {
-                if (Session["Org"].Equals(org.name))
-                {
-                    int number;
-                    if (int.TryParse(addId.Text, out number))
-                    {
-                        Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
-                            addJob.Text, addInfo.Text, addCity.SelectedItem.ToString()));
-                        Server.Transfer("Browse.aspx");
-                    }
-                    else
-                    {
-                        Response.Text = "ID needs to be a number";
-                    }
-                }
+                Storage.database.Add(new Organisation(number, addName.Text, addAddress.Text, addBuilding.Text,
+                    addJob.Text, addInfo.Text, addCity.SelectedItem.ToString()));
+                Server.Transfer("Browse.aspx");
             }
+            else
+            {
+                Response.Text = "ID needs to be a number";
+            }
+                
+            
         }
 
         else

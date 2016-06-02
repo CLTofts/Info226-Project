@@ -12,16 +12,17 @@
     
         <asp:Label ID="Label1" runat="server" Text="Register Page"></asp:Label>
         <p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="Label4" runat="server" Text="ID:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="id" runat="server" style="margin-left: 3px" Width="120px"></asp:TextBox>
+&nbsp;<asp:TextBox ID="id" runat="server" style="margin-left: 5px" Width="50px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="Label2" runat="server" Text="Username:"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 4px"></asp:TextBox>
+&nbsp;<asp:TextBox ID="TextBox1" runat="server" style="margin-left: 6px"></asp:TextBox>
         </p>
         <asp:Label ID="Label3" runat="server" Text="Password:"></asp:Label>
-&nbsp;<asp:TextBox ID="TextBox2" runat="server" style="margin-left: 3px"></asp:TextBox>
+&nbsp;
+        <asp:TextBox ID="TextBox2" runat="server" style="margin-left: 3px"></asp:TextBox>
         <br />
         <asp:Label ID="Label5" runat="server" Text="Admin:"></asp:Label>
         <asp:CheckBox ID="Admin" runat="server" OnCheckedChanged="Admin_CheckedChanged" />

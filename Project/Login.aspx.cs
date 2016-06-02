@@ -33,7 +33,7 @@ public partial class Login : System.Web.UI.Page
                         if (log.admin == true)
                         {
                             Session["admin"] = true;
-                            Server.Transfer("adminMain.aspx");
+                            Server.Transfer("adminMainNew.aspx");
                         }
                         else
                         {

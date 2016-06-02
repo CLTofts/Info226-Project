@@ -16,6 +16,9 @@ form {
     font-weight: bolder;
     background-color: #000000;
     color: #FFFFFF;
+    border-style: solid;
+    border-width: 20px;
+    border-color: white red;
 
 }
 centre {

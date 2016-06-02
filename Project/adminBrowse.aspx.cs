@@ -7,7 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 
-public partial class Browse : System.Web.UI.Page
+
+public partial class adminBrowse : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -62,7 +63,8 @@ public partial class Browse : System.Web.UI.Page
                     Response.Write("Error reading from XML File");
                 }
             }
-            try{
+            try
+            {
                 string file = @"\XMLFile.xml";
                 string rel_dir = HttpContext.Current.ApplicationInstance.Server.MapPath("~/XML_Data");
                 string absolute_path = rel_dir + file;
@@ -127,7 +129,7 @@ public partial class Browse : System.Web.UI.Page
             }
         }
     }
-   
+
 
     protected void editButton_Click(object sender, EventArgs e)
     {

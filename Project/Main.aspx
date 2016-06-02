@@ -8,4 +8,5 @@
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Main" />
     <p>
     </p>
+    <asp:Label ID="Label1" runat="server" Text="Welcome to the Happy Homes main page"></asp:Label>
 </asp:Content>

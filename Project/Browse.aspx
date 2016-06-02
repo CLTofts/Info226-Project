@@ -7,7 +7,9 @@
     <asp:Button ID="browseButton" runat="server" Text="Browse" OnClick="browseButton_Click" />
     &nbsp;&nbsp;<br />
     &nbsp;
-    <asp:ListBox ID="ListBox1" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="300px" Height="300" Font-Size="15pt"></asp:ListBox>
-    <asp:Button ID="editButton" runat="server" OnClick="editButton_Click" Text="Edit" />
+    <asp:ListBox ID="ListBox1" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="300px" Height="290px" Font-Size="15pt"></asp:ListBox>
+    &nbsp;<asp:Button ID="editButton" runat="server" OnClick="editButton_Click" Text="Edit" />
+    <asp:Button ID="Button1" runat="server" OnClick="DeleteButton_Click1" Text="Delete" />
+&nbsp;&nbsp; 
 </asp:Content>
 

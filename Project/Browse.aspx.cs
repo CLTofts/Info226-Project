@@ -148,4 +148,24 @@ public partial class Browse : System.Web.UI.Page
     {
         System.Diagnostics.Debug.WriteLine("I have been changed");
     }
+    protected void DeleteButton_Click1(object sender, EventArgs e)
+    {
+        Organisation toRemove = null;
+        foreach (Organisation org in Storage.database)
+        {
+            if (org.name.Equals(ListBox1.SelectedItem.ToString()))
+            {
+                toRemove = org;
+            }
+        }
+        if (toRemove != null)
+        {
+            Storage.database.Remove(toRemove);
+        }
+        ListBox1.ClearSelection();
+        foreach (Organisation org in Storage.database)
+        {
+            ListBox1.Items.Add(org.name);
+        }
+    }
 }
